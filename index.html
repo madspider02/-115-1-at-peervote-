@@ -546,5 +546,57 @@ $('identity-form').addEventListener('submit',ev=>{
 });
 connect();
 </script>
+<script>
+(function () {
+  'use strict';
+  const names = Object.freeze({
+    1:"球球，你別進洞！",
+    2:"注音卡牌遊戲",
+    3:"聲響懸吊幣值氣球拍擊盤",
+    4:"垃圾分類卡牌遊戲",
+    5:"生活用品磁吸配對板",
+    6:"得分連線投擲靶",
+    7:"百變足球",
+    8:"班級公約動動卡",
+    9:"手眼協調平衡迷宮訓練板",
+    10:"可調式路徑任務板"
+  });
+  const style = document.createElement('style');
+  style.textContent = '.group-name-added {color:#713b8e;font-size:clamp(16px,2.7vw,19px);font-weight:850;line-height:1.5;overflow-wrap:anywhere;margin:4px 0}.group-index-name {font-size:14px!important}.group-list-plain div {overflow-wrap:anywhere}';
+  document.head.appendChild(style);
+  const pattern = /第\s*(\d+)\s*組/;
+  function update(root) {
+    if (!root) return;
+    root.querySelectorAll('.group-head').forEach(head => {
+      const index = head.querySelector('.group-index');
+      if (!index) return;
+      const m = index.textContent.match(pattern);
+      if (!m || !names[Number(m[1])]) return;
+      if (head.querySelector('.group-name-added')) return;
+      const topic = document.createElement('div');
+      topic.className = 'group-name-added';
+      topic.textContent = names[Number(m[1])];
+      index.classList.add('group-index-name');
+      const heading = document.createElement('div');
+      heading.style.cssText = 'flex:1 1 220px;min-width:0';
+      index.parentNode.insertBefore(heading,index);
+      heading.appendChild(index);
+      heading.appendChild(topic);
+      const sub = head.querySelector('.group-desc');
+      if (sub) heading.appendChild(sub);
+    });
+    root.querySelectorAll('.group-list-plain div,.history-title').forEach(node => {
+      const m=node.textContent.match(pattern);
+      if (!m || !names[Number(m[1])]) return;
+      const label='第 '+Number(m[1])+' 組：'+names[Number(m[1])];
+      if (node.textContent !== label) node.textContent=label;
+    });
+  }
+  const root = document.querySelector('main') || document.body;
+  update(root);
+  const observer=new MutationObserver(() => update(root));
+  observer.observe(root,{childList:true,subtree:true});
+})();
+</script>
 </body>
 </html>
