@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f5f7fb">
+<meta name="description" content="學習功能嚴重缺損課程調整與教學設計：好玩、好用、好學三指標各4分，期末報告逐組評分與心得回顧。">
+<title>學習功能嚴重缺損課程調整與教學設計｜期末報告互評</title>
+<style>
+:root { --ink:#17304d; --muted:#667991; --line:#e3e9f3; --brand:#315bc5; --brand-dark:#21469f; --teal:#087f78; --paper:#ffffff; --page:#f5f7fb; --soft:#f1f5fc; --shadow:0 16px 48px rgba(18,42,77,.055); }
+* { box-sizing:border-box; }
+html { -webkit-text-size-adjust:100%; }
+body { margin:0; min-height:100vh; background:var(--page); color:var(--ink); font:15px/1.65 -apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif; }
+button,input,textarea { font:inherit; }
+button { cursor:pointer; }
+button:focus-visible,input:focus-visible,textarea:focus-visible,.choice:focus-within { outline:3px solid #b6caff; outline-offset:2px; }
+[hidden] { display:none !important; }
+.wrap { width:min(100% - 32px,880px); margin-inline:auto; }
+.site-header { border-bottom:1px solid var(--line); background:white; }
+.header-inner { display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:74px; }
+.brand { display:flex; align-items:center; gap:11px; font-size:16px; font-weight:820; }
+.brand-icon { width:42px; height:42px; border-radius:14px; background:#edf1ff; display:grid; place-items:center; font-size:21px; color:var(--brand); }
+.header-note { color:var(--muted); font-size:12px; text-align:right; }
+main { padding:29px 0 54px; }
+.hero { position:relative; overflow:hidden; isolation:isolate; border-radius:24px; background:linear-gradient(120deg,#173250 0%,#214579 67%,#276d87 130%); padding:29px 34px 32px; color:#fff; }
+.hero:after { position:absolute; content:""; width:370px; height:370px; border:1px solid #ffffff22; border-radius:50%; right:-125px; top:-180px; z-index:-1; box-shadow:0 0 0 64px #ffffff08,0 0 0 130px #ffffff04; }
+.eyebrow { color:#bed4ff; font-size:11px; font-weight:850; letter-spacing:.13em; }
+.hero h1 { font-size:clamp(23px,4.8vw,34px); line-height:1.42; letter-spacing:.025em; margin:6px 0 9px; }
+.hero p { margin:0; color:#dae5f5; font-size:14px; max-width:570px; }
+.chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:19px; }
+.chip { border-radius:80px; border:1px solid #ffffff36; background:#ffffff16; padding:5px 11px; font-size:12px; color:#f4f8ff; }
+.card { margin-top:19px; border:1px solid #e4eaf3; box-shadow:var(--shadow); background:var(--paper); border-radius:21px; padding:27px 31px 30px; }
+.card h2 { margin:0 0 4px; font-size:19px; line-height:1.4; }
+.card .sub { margin:0 0 21px; color:var(--muted); font-size:13px; }
+.tagline { color:var(--brand); font-size:11px; font-weight:850; letter-spacing:.09em; margin-bottom:3px; }
+.fields { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.field label { display:block; margin-bottom:7px; font-weight:750; font-size:13px; }
+.field input { width:100%; border:1.5px solid #d6e0ed; background:#fff; border-radius:12px; padding:12px 14px; color:var(--ink); outline:none; min-width:0; }
+.field input::placeholder,textarea::placeholder { color:#95a2b4; }
+.field input:disabled { background:#f4f6f9; }
+.field input:focus,textarea:focus { border-color:#7da2f1; box-shadow:0 0 0 3px #b3c8fc45; }
+.form-bottom { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:16px; }
+.hint { color:var(--muted); font-size:12px; max-width:540px; line-height:1.6; }
+.btn { appearance:none; border:0; border-radius:12px; padding:11px 21px; background:var(--brand); color:white; font-weight:800; font-size:14px; white-space:nowrap; }
+.btn:hover:not(:disabled) { background:var(--brand-dark); }
+.btn:disabled { background:#acbdd7; cursor:not-allowed; }
+.btn.secondary { color:var(--brand); background:#edf2ff; }
+.btn.secondary:hover:not(:disabled) { background:#dce8ff; }
+.status { margin-top:14px; padding:11px 14px; border-radius:12px; font-size:13px; }
+.status.info { background:#edf3ff; color:#315480; }
+.status.error { background:#fff0ed; color:#a93d32; }
+.status.success { background:#e9f8f1; color:#126b58; }
+.current-user { display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between; border:1px solid #d9e5f6; border-radius:16px; padding:16px 19px; background:#eff4fd; margin-top:19px; }
+.current-user strong { display:block; font-size:15px; }
+.current-user span { display:block; color:#5d718e; font-size:12px; }
+.section-heading { display:flex; align-items:baseline; justify-content:space-between; gap:10px; flex-wrap:wrap; margin:28px 2px 12px; }
+.section-heading h2 { margin:0; font-size:17px; }
+.section-heading p { margin:0; font-size:12px; color:var(--muted); }
+.weeks { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; }
+.week-tab { text-align:left; color:var(--ink); background:white; border:1.5px solid var(--line); padding:14px 16px 13px; border-radius:14px; transition:border-color .15s,background .15s; min-height:121px; }
+.week-tab:hover:not(:disabled) { border-color:#a8bfec; }
+.week-tab.selected { border-color:var(--brand); box-shadow:0 0 0 3px #e9efff; }
+.week-tab:disabled { cursor:wait; }
+.week-kicker { color:#8091a6; font-size:12px; font-weight:750; }
+.week-date { display:block; font-weight:850; font-size:24px; line-height:1.5; margin:4px 0 2px; }
+.week-state { display:inline-block; font-size:11px; border-radius:50px; padding:2px 8px; color:#718097; background:#f1f3f7; }
+.week-state.open { color:var(--teal); background:#e3f5f0; }
+.week-state.done { color:var(--brand); background:#e7edff; }
+.card-top { display:flex; align-items:start; justify-content:space-between; gap:16px; }
+.card-kicker { color:var(--brand); font-size:12px; font-weight:850; margin-bottom:5px; }
+.card-title { margin:0; font-size:clamp(19px,3vw,23px); }
+.pill { flex:none; border-radius:80px; background:#f1f3f8; color:#64758b; padding:5px 11px; font-size:12px; font-weight:800; }
+.pill.open { background:#e3f5f0; color:var(--teal); }
+.deadline { margin:9px 0 20px; color:#6c7e91; font-size:12px; }
+.form-label { font-weight:830; font-size:14px; margin-bottom:11px; display:block; }
+.choices { display:grid; gap:11px; margin-bottom:23px; }
+.choice { display:block; position:relative; cursor:pointer; }
+.choice input { position:absolute; left:16px; top:16px; opacity:0; width:1px; height:1px; }
+.choice-body { display:flex; align-items:center; justify-content:space-between; gap:15px; border:1.5px solid #dce5f0; border-radius:14px; padding:15px 18px; background:white; min-height:83px; }
+.choice:hover .choice-body { border-color:#b6c9ef; }
+.choice input:checked + .choice-body { border-color:var(--brand); background:#f1f5ff; }
+.choice input:disabled + .choice-body { cursor:wait; }
+.choice-index { display:block; color:#73869f; font-size:12px; font-weight:800; margin-bottom:3px; }
+.choice-topic { display:block; font-size:16px; font-weight:850; }
+.radio-circle { flex:none; width:23px; height:23px; border:2px solid #c4d0df; border-radius:50%; display:grid; place-items:center; background:#fff; }
+.radio-circle:after { content:""; width:11px; height:11px; background:var(--brand); border-radius:50%; transform:scale(0); }
+.choice input:checked + .choice-body .radio-circle { border-color:var(--brand); }
+.choice input:checked + .choice-body .radio-circle:after { transform:scale(1); }
+.comment-head { display:flex; justify-content:space-between; align-items:baseline; gap:8px; }
+.count { color:#788aa0; font-size:12px; font-variant-numeric:tabular-nums; }
+textarea { display:block; min-height:105px; resize:vertical; width:100%; border-radius:13px; border:1.5px solid #d6e0ed; padding:13px 15px; color:var(--ink); outline:none; }
+.notice { border-radius:14px; padding:16px 18px; color:#52677d; font-size:13px; background:#f5f8fc; border:1px solid #edf0f6; }
+.notice strong { display:block; font-size:15px; color:var(--ink); margin-bottom:4px; }
+.notice.success { background:#eef9f4; border-color:#d4ece2; }
+.notice.success strong { color:#087865; }
+.readonly-comment { margin-top:12px; padding:14px 16px; border-left:3px solid #7ca0e0; background:#f6f9fe; border-radius:0 12px 12px 0; font-size:14px; white-space:pre-wrap; overflow-wrap:anywhere; }
+.history-list { display:grid; gap:11px; }
+.history-item { border:1px solid #e3eaf4; border-radius:15px; padding:15px 18px; }
+.history-head { display:flex; align-items:center; flex-wrap:wrap; gap:9px; font-size:12px; color:#7c8ba0; }
+.history-badge { background:#e9efff; color:#315bc5; border-radius:30px; padding:2px 9px; font-size:11px; font-weight:800; }
+.history-title { margin-top:7px; font-weight:820; font-size:15px; }
+.history-note { margin:6px 0 0; color:#4f6278; font-size:14px; white-space:pre-wrap; overflow-wrap:anywhere; }
+.empty { color:var(--muted); font-size:13px; padding:14px 0 3px; }
+.footnote { text-align:center; color:#8190a2; font-size:12px; margin:25px 0 0; }
+@media(max-width:620px) {
+ .wrap { width:min(100% - 24px,880px); }
+ .header-inner { min-height:66px; }
+ .header-note { display:none; }
+ main { padding-top:16px; }
+ .hero { padding:24px 21px; border-radius:19px; }
+ .card { padding:23px 18px 25px; border-radius:18px; }
+ .fields { grid-template-columns:1fr; gap:12px; }
+ .form-bottom { align-items:stretch; flex-direction:column; }
+ .form-bottom .btn { width:100%; }
+ .weeks { gap:7px; }
+ .week-tab { padding:12px 9px; min-height:116px; border-radius:12px; }
+ .week-date { font-size:20px; }
+ .week-kicker { font-size:11px; }
+ .week-state { font-size:10px; padding:2px 6px; }
+ .choice-topic { font-size:15px; }
+ .card-top { flex-direction:column; gap:9px; }
+}
+@media(prefers-reduced-motion:reduce) { *,*::before,*::after { transition:none !important; scroll-behavior:auto !important; } }
+.notice.exempt {background:#fff8e6;border-color:#f2e2b6;color:#765e34;}
+.notice.exempt strong {color:#8b5a16;}
+
+.group-list {display:grid;gap:15px;margin-top:19px;}
+.group-card {border:1px solid #e0e8f3;border-radius:17px;background:#fff;padding:21px 21px 23px;box-shadow:0 5px 20px rgba(23,48,77,.025);}
+.group-card.complete-group {background:#fcfdff;}
+.group-head {display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid #edf1f6;margin-bottom:17px;}
+.group-index {font-weight:860;font-size:19px;color:#1b3e66;}
+.group-desc {color:#6d819b;font-size:12px;}
+.group-badge {margin-left:auto;border-radius:22px;font-size:11px;padding:4px 10px;background:#f0f4fa;color:#69819b;font-weight:780;}
+.group-badge.complete {background:#e6f7ef;color:#087b68;}
+.progress-line {display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;color:#25486e;font-size:13px;margin-top:15px;}
+.progress-line span{color:#7d8da1;font-size:12px;}
+.progress-track{height:7px;background:#ecf1f8;border-radius:20px;overflow:hidden;margin-top:9px;}
+.progress-fill{background:linear-gradient(90deg,#5e86e4,#188e87);height:100%;border-radius:20px;transition:width .2s;}
+.mini-guide {color:#637a93;font-size:12px;margin:0 0 15px;}
+.metric-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:19px;}
+.metric {min-width:0;margin:0;padding:13px 12px;border:1px solid #e0e8f3;border-radius:14px;background:#f8fafd;}
+.metric legend {float:left;width:100%;padding:0 0 12px;margin:0;}
+.metric legend strong {font-size:15px;display:block;color:#1b385d;}
+.metric legend span {font-size:10px;display:block;color:#7d90a5;line-height:1.5;margin-top:1px;min-height:31px;}
+.rating-choices {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;clear:both;}
+.rate {cursor:pointer;display:block;min-width:0;position:relative;}
+.rate input {opacity:0;position:absolute;width:1px;height:1px;}
+.rate span {display:flex;justify-content:center;align-items:baseline;gap:1px;border:1.4px solid #d9e2ee;background:#fff;color:#64788d;border-radius:10px;padding:7px 2px;font-weight:820;font-size:17px;}
+.rate small {font-size:10px;font-weight:500;}
+.rate input:checked+span {background:#edf2ff;border-color:#315bc5;color:#264fae;box-shadow:inset 0 0 0 1px #315bc5;}
+.rate input:focus-visible+span {outline:3px solid #a6c0ff;outline-offset:2px;}
+.rate:hover span{border-color:#9fb9e5;}
+.rate input:disabled+span {opacity:.58;cursor:wait;}
+.score-pills{display:flex;flex-wrap:wrap;gap:8px;margin:13px 0;}
+.score-pills span {font-size:12px;background:#e9f0ff;border-radius:22px;padding:5px 11px;color:#3c598a;}
+.score-pills b{font-size:13px;color:#244d9e;}
+.score-pills .score-total{background:#e5f7f1;color:#0b6c5a;}
+.score-pills .score-total b{color:#087866;}
+.readonly-tip{font-size:12px;color:#0d7b68;}
+.group-card textarea {min-height:104px;}
+.group-card .form-bottom {margin-top:13px;}
+.group-list-plain {display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:16px;}
+.group-list-plain div {padding:14px 12px;border:1px solid #e0e7f2;border-radius:12px;font-weight:750;color:#4a6079;background:#fbfcff;}
+@media(max-width:720px){.metric-grid{grid-template-columns:1fr;}.metric legend span{min-height:0;}.rating-choices{grid-template-columns:repeat(4,minmax(0,1fr));}.metric{padding:12px 15px;}}
+@media(max-width:620px){.weeks{grid-template-columns:repeat(2,minmax(0,1fr));}.week-tab{min-height:97px;}.metric-grid{gap:10px;}.group-card{padding:17px 13px;}.group-head{gap:7px;}.group-badge{margin-left:auto;}.group-desc{font-size:11px;}.progress-line{align-items:start;}}
+</style>
+</head>
+<body>
+<header class="site-header"><div class="wrap header-inner"><div class="brand"><div class="brand-icon" aria-hidden="true">學</div><div>學習功能嚴重缺損課程調整與教學設計</div></div><div class="header-note">2026 秋季課程 · 原版單頁 · 好玩 × 好用 × 好學</div></div></header>
+<main class="wrap">
+ <section class="hero" aria-labelledby="page-title">
+  <div class="eyebrow">FINAL PROJECT · PEER REVIEW</div>
+  <h1 id="page-title">好的教學設計，值得被看見。</h1>
+  <p>逐組評一評：這份成果有多好玩、多好用、多好學？每個面向各給 1～4 分，再寫下至少 10 字心得。你也可以在下週回顧自己留下的評語。</p>
+  <div class="chips"><span class="chip">學號＋姓名核對</span><span class="chip">每組三項各 4 分</span><span class="chip">心得至少 10 字</span><span class="chip">報告當週免評</span><span class="chip">送出不可修改</span></div>
+ </section>
+ <section class="card" id="identity-card" aria-labelledby="identity-title">
+  <div class="tagline">STEP 01 · IDENTIFY</div>
+  <h2 id="identity-title">第一步：輸入學號與姓名</h2>
+  <p class="sub">只要與課程名單相符，就能在同一頁選擇週次、逐組評分，並查看以前的心得。</p>
+  <form id="identity-form" novalidate><div class="fields">
+   <div class="field"><label for="student-id">學號（必填）</label><input id="student-id" name="studentId" type="text" autocomplete="off" maxlength="24" spellcheck="false" placeholder="請輸入你的學號" required></div>
+   <div class="field"><label for="student-name">姓名（必填）</label><input id="student-name" name="studentName" type="text" autocomplete="name" maxlength="30" placeholder="請輸入完整姓名" required></div>
+  </div><div class="form-bottom"><span class="hint">教師已預先匯入 38 人名單，無須自行登記。請勿代他人填答。</span><button type="submit" class="btn" id="identify-btn">查看我的互評頁面</button></div>
+  <div class="status" role="status" aria-live="polite" id="identity-message" hidden></div></form>
+ </section>
+ <div id="workspace" hidden>
+  <section class="current-user" id="user-banner" aria-label="目前登入的填寫者"></section>
+  <div class="section-heading"><h2>選擇報告週次</h2><p>報告前一天開放 · 報告後一天截止（臺灣時間）</p></div>
+  <nav class="weeks" id="week-tabs" aria-label="報告週次"></nav>
+  <section class="card" id="weekly-panel" aria-live="polite"></section>
+  <section class="card" id="history-panel" aria-labelledby="history-heading"></section>
+ </div>
+ <p class="footnote">本頁僅供課堂互評。姓名與學號只用來核對名單及查詢個人紀錄，原始資料保存於教師的 Google Sheet。</p>
+</main>
+<script>'use strict';
+/* 新課程請部署自己的 Apps Script，再把下行替換成新取得的 /exec 網址。
+   絕對不要貼教學原理那一門的舊網址。 */
+const WEB_APP_URL = 'PASTE_NEW_COURSE_APPS_SCRIPT_EXEC_URL_HERE';
+const BACKEND_RELEASE = 'SF-2026-v1.0';
+const WEEKS = [
+ {id:'2026-11-23',label:'11/23',ordinal:'第一週',open:'2026-11-22',end:'2026-11-24',groups:[1,2]},
+ {id:'2026-12-07',label:'12/7',ordinal:'第二週',open:'2026-12-06',end:'2026-12-08',groups:[3,4]},
+ {id:'2026-12-14',label:'12/14',ordinal:'第三週',open:'2026-12-13',end:'2026-12-15',groups:[5,6,7]},
+ {id:'2026-12-21',label:'12/21',ordinal:'第四週',open:'2026-12-20',end:'2026-12-22',groups:[8,9,10]}
+];
+const DIMENSIONS = [
+ {key:'fun',label:'好玩',hint:'活動有趣、能引發參與'},
+ {key:'useful',label:'好用',hint:'教材、教具或策略具有實用性'},
+ {key:'learn',label:'好學',hint:'說明清楚、容易理解與學習'}
+];
+const $=id=>document.getElementById(id);
+const state={identity:null,records:[],presenterGroup:null,exemptWeekId:null,weekId:null,drafts:{},sending:false,pending:null};
+let connection='checking',connectionMessage='';
+function esc(value){return String(value==null?'':value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function secureToken(){
+ if(window.crypto?.randomUUID) return window.crypto.randomUUID();
+ if(window.crypto?.getRandomValues){const b=new Uint8Array(24);window.crypto.getRandomValues(b);return Array.from(b,n=>n.toString(16).padStart(2,'0')).join('');}
+ throw new Error('瀏覽器不支援安全隨機編號，請改用最新 Chrome、Safari 或 Edge。');
+}
+function taiwanToday(){
+ const p=new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+ const o=Object.fromEntries(p.map(x=>[x.type,x.value]));return `${o.year}-${o.month}-${o.day}`;
+}
+function weekStatus(w){const d=taiwanToday();return d<w.open?'upcoming':d>w.end?'closed':'open';}
+function exempt(w){return state.exemptWeekId===w.id;}
+function ownRecord(groupId){return state.records.find(r=>Number(r.groupId)===Number(groupId));}
+function weekDone(w){return w.groups.filter(g=>ownRecord(g)).length;}
+function weekStatusText(w){
+ if(exempt(w))return '當週免評';
+ if(weekDone(w)===w.groups.length)return '已完成';
+ if(weekStatus(w)==='open')return `已評 ${weekDone(w)}/${w.groups.length}`;
+ return weekStatus(w)==='upcoming'?'尚未開放':'已截止';
+}
+function currentWeek(){return WEEKS.find(w=>w.id===state.weekId)||WEEKS[0];}
+function show(id,kind,message){const el=$(id);if(!el)return;el.className='status '+kind;el.textContent=message;el.hidden=false;}
+function hideMessage(id){const el=$(id);if(el)el.hidden=true;}
+function noteCourseConfig(){
+ const ready=/^https:\/\/script\.google\.com\/macros\/s\/[a-zA-Z0-9_-]+\/exec$/.test(WEB_APP_URL);
+ if(!ready){connection='error';connectionMessage='此課程尚未設定獨立的 Google Sheet 接收網址。請教師先完成 Apps Script 部署並將新 /exec 網址填入 index.html。';show('identity-message','error',connectionMessage);return false;}
+ return true;
+}
+function readJsonp(query,timeoutMs=9000){
+ return new Promise((resolve,reject)=>{
+  const callback='sfvCb_'+secureToken().replace(/[^A-Za-z0-9]/g,'').padEnd(24,'0');
+  const script=document.createElement('script');let finished=false,timer;
+  const clean=()=>{clearTimeout(timer);if(script.parentNode)script.parentNode.removeChild(script);try{delete window[callback];}catch(_){window[callback]=undefined;}};
+  window[callback]=data=>{if(finished)return;finished=true;clean();resolve(data);};
+  script.onerror=()=>{if(finished)return;finished=true;clean();reject(new Error('無法讀取這門課的 Apps Script 接收端；請教師檢查部署存取權限是否為「任何人」。'));};
+  timer=setTimeout(()=>{if(finished)return;finished=true;clean();reject(new Error('Apps Script 查詢逾時，請教師確認部署網址及版本。'));},timeoutMs);
+  script.src=WEB_APP_URL+'?'+new URLSearchParams({...query,callback,nonce:secureToken()}).toString();
+  document.head.appendChild(script);
+ });
+}
+async function connect(){
+ if(!noteCourseConfig())return;
+ try {
+  const envelope=await readJsonp({action:'health'},10000);
+  if(envelope?.ready&&envelope.release===BACKEND_RELEASE){connection='ready';hideMessage('identity-message');}
+  else {connection='error';connectionMessage='Apps Script 後端版本不符合本課程 SF-2026-v1.0；請教師更新這門課的新部署。';show('identity-message','error',connectionMessage);}
+ }catch(err){connection='error';connectionMessage=String(err.message||err);show('identity-message','error',connectionMessage);}
+}
+function sleep(ms){return new Promise(resolve=>setTimeout(resolve,ms));}
+async function pollResult(requestId){
+ const start=Date.now();
+ while(Date.now()-start<45000){
+  const env=await readJsonp({action:'poll',requestId},10000);
+  if(env.release!==BACKEND_RELEASE)throw new Error('後端版本不符，請教師重新部署此課程的 Code.gs。');
+  if(env.ready)return env.result;
+  await sleep(1200);
+ }
+ throw new Error('等待 Google Sheet 回覆逾時，請先確認是否已有紀錄；重試會沿用相同提交編號。');
+}
+function updateIdentityButton(){const busy=state.sending||Boolean(state.pending);$('student-id').disabled=busy;$('student-name').disabled=busy;$('identify-btn').disabled=busy;$('identify-btn').textContent=busy?'正在核對…':'查看我的互評頁面';}
+function setWeekDefault(){
+ const w=WEEKS.find(x=>weekStatus(x)==='open'&&!exempt(x)&&weekDone(x)<x.groups.length)
+ ||WEEKS.find(x=>weekStatus(x)==='open')
+ ||WEEKS.find(x=>weekStatus(x)==='upcoming'&&!exempt(x))
+ ||WEEKS[WEEKS.length-1];state.weekId=w.id;
+}
+async function api(attempt){
+ if(state.sending)return;
+ state.sending=true;state.pending=attempt;
+ updateIdentityButton();
+ if(state.identity)render();
+ const msgId=attempt.action==='lookup'?'identity-message':'group-message-'+attempt.groupId;
+ show(msgId,'info',attempt.action==='lookup'?'正在核對學號與姓名…':'正在儲存這組評分，請不要關閉頁面…');
+ const body=new URLSearchParams();
+ Object.entries(attempt).forEach(([k,v])=>body.set(k,String(v??'')));
+ // Apps Script ContentService 的回應可能被瀏覽器的跨網域限制擋下。
+ // POST 只負責送資料；由隨機 token 的 JSONP 輪詢確認後端處理結果。
+ const post=fetch(WEB_APP_URL,{method:'POST',mode:'no-cors',credentials:'omit',body,redirect:'follow'});
+ post.catch(()=>{});
+ try {
+  const result=await pollResult(attempt.requestId);
+  state.sending=false;state.pending=null;updateIdentityButton();
+  if(!result||result.ok!==true){
+   if(state.identity)render();
+   show(msgId,'error',result?.message||'後端處理失敗，請教師查看 Apps Script 執行紀錄。');return;
+  }
+  if(result.release!==BACKEND_RELEASE){show(msgId,'error','後端版本不符，請教師更新部署。');return;}
+  if(attempt.action==='lookup'){
+   state.identity={studentId:result.studentId,studentName:result.studentName};
+   state.presenterGroup=result.presenterGroup;state.exemptWeekId=result.exemptWeekId;
+   state.records=Array.isArray(result.records)?result.records:[];
+   setWeekDefault();$('identity-card').hidden=true;$('workspace').hidden=false;render();
+  }else{
+   state.records=Array.isArray(result.records)?result.records:[];
+   delete state.drafts[attempt.groupId];render();
+   show('group-message-'+attempt.groupId,'success',result.message||'已送出，資料不能修改。');
+  }
+ }catch(err){
+  state.sending=false;
+  if(attempt.action==='lookup')state.pending=null;
+  updateIdentityButton();if(state.identity)render();
+  show(msgId,'error',String(err.message||err)+(attempt.action==='submit'?' 請使用這組的「重新確認」按鈕，以相同編號重試，避免重複記錄。':' 請教師檢查此課程部署。'));
+ }
+}
+function renderBanner(){
+ $('user-banner').innerHTML=`<div><strong>${esc(state.identity.studentName)}，歡迎進入互評頁面</strong><span>學號 ${esc(state.identity.studentId)} · 第 ${state.presenterGroup} 組 · 該組報告週免評</span></div><button type="button" class="btn secondary" id="switch-user">切換填寫者</button>`;
+ $('switch-user').addEventListener('click',()=>{
+  if(state.sending||state.pending)return;
+  state.identity=null;state.records=[];state.drafts={};state.presenterGroup=null;state.exemptWeekId=null;
+  $('workspace').hidden=true;$('identity-card').hidden=false;$('student-id').value='';$('student-name').value='';hideMessage('identity-message');$('student-id').focus();
+ });
+}
+function renderTabs(){
+ const tab=$('week-tabs');tab.replaceChildren();
+ WEEKS.forEach(w=>{
+  const selected=state.weekId===w.id;
+  const b=document.createElement('button');b.type='button';b.disabled=state.sending||Boolean(state.pending);
+  b.className='week-tab'+(selected?' selected':'');b.setAttribute('aria-pressed',String(selected));
+  const done=weekDone(w)===w.groups.length;
+  b.innerHTML=`<span class="week-kicker">${w.ordinal}</span><span class="week-date">${w.label}</span><span class="week-state ${done&&!exempt(w)?'done':weekStatus(w)==='open'&&!exempt(w)?'open':''}">${weekStatusText(w)}</span>`;
+  b.addEventListener('click',()=>{if(state.sending||state.pending)return;state.weekId=w.id;render();});
+  tab.appendChild(b);
+ });
+}
+function ratingControls(groupId,key,label,hint,draft,disabled){
+ return `<fieldset class="metric"><legend><strong>${label}</strong><span>${hint}</span></legend>
+ <div class="rating-choices" aria-label="${label}分數">${[1,2,3,4].map(n=>`<label class="rate"><input type="radio" name="${key}-${groupId}" value="${n}" ${Number(draft[key])===n?'checked':''} ${disabled?'disabled':''}><span>${n}<small>分</small></span></label>`).join('')}</div></fieldset>`;
+}
+function scorePills(r){return `<div class="score-pills"><span>好玩 <b>${r.fun}/4</b></span><span>好用 <b>${r.useful}/4</b></span><span>好學 <b>${r.learn}/4</b></span><span class="score-total">合計 <b>${r.total}/12</b></span></div>`;}
+function commentLength(v){return Array.from(String(v||'').replace(/\s/g,'')).length;}
+function groupCard(w,g,status){
+ const record=ownRecord(g),d=state.drafts[g]||{fun:0,useful:0,learn:0,comment:''};
+ const head=`<div class="group-head"><div class="group-index">第 ${g} 組</div><div class="group-desc">期末成果報告 · ${w.label}</div><span class="group-badge ${record?'complete':''}">${record?'已完成':status==='open'?'待評分':status==='upcoming'?'尚未開放':'已截止'}</span></div>`;
+ if(record)return `<article class="group-card complete-group" id="group-${g}">${head}<div class="readonly-tip">這組已送出，評分與心得不能修改。</div>${scorePills(record)}<p class="history-note">${esc(record.comment)}</p><div class="deadline">提交：${esc(record.submittedAt)}</div><div id="group-message-${g}" class="status" role="status" hidden></div></article>`;
+ if(status!=='open')return `<article class="group-card" id="group-${g}">${head}<div class="notice">${status==='upcoming'?'報告前一天 00:00 開放評分。':'已超過截止時間，無法補填或修改。'}</div></article>`;
+ return `<article class="group-card" id="group-${g}">${head}
+  <form id="form-${g}" novalidate><p class="mini-guide">請分別給 1～4 分（4 分表示最符合），再寫下至少 10 字的具體心得。</p>
+  <div class="metric-grid">
+  ${DIMENSIONS.map(m=>ratingControls(g,m.key,m.label,m.hint,d,false)).join('')}
+  </div>
+  <div class="comment-head"><label class="form-label" for="comment-${g}">這一組的學習心得（至少 10 字）</label><span class="count" id="count-${g}">0 / 至少 10 字</span></div>
+  <textarea id="comment-${g}" rows="3" placeholder="例如：活動的操作方式很清楚，我學到如何調整教材……" aria-describedby="count-${g}"></textarea>
+  <div class="form-bottom"><span class="hint">每組只可送出一次；送出後無法改分或改心得。</span><button class="btn" type="submit" id="send-${g}" disabled>送出第 ${g} 組評分</button></div>
+  <div id="group-message-${g}" class="status" role="status" aria-live="polite" hidden></div>
+  </form></article>`;
+}
+function renderWeekly(){
+ const w=currentWeek(),status=weekStatus(w),done=weekDone(w),isExempt=exempt(w);
+ const period=`${w.open.replaceAll('-','/')} 00:00 ～ ${w.end.replaceAll('-','/')} 23:59`;
+ let html=`<div class="card-top"><div><div class="card-kicker">${w.ordinal} · ${w.label}（週一）</div><h2 class="card-title">期末成果分組互評</h2></div><span class="pill ${status==='open'&&!isExempt?'open':''}">${weekStatusText(w)}</span></div>
+ <div class="deadline">開放期間：${period}（臺灣時間）</div>`;
+ if(isExempt){
+  html+=`<div class="notice exempt"><strong>本週你是第 ${state.presenterGroup} 組報告者，免評本週所有組別</strong>這週共有 ${w.groups.length} 組報告，依課堂規則，所有當週報告組員均免填；其他週次仍正常評分。</div>`;
+  html+=`<div class="group-list-plain">${w.groups.map(g=>`<div>第 ${g} 組 · 期末成果報告</div>`).join('')}</div>`;
+ }else{
+  html+=`<div class="progress-line"><strong>本週進度：${done} / ${w.groups.length} 組</strong><span>${done===w.groups.length?'本週全部完成！':'每個報告組別都要分別評分'}</span></div><div class="progress-track"><div class="progress-fill" style="width:${100*done/w.groups.length}%"></div></div>`;
+  if(status==='closed'&&done<w.groups.length)html+='<div class="notice" style="margin:16px 0">已超過截止時間，尚未評分的組別無法再補交。</div>';
+  html+='<div class="group-list">'+w.groups.map(g=>groupCard(w,g,status)).join('')+'</div>';
+ }
+ $('weekly-panel').innerHTML=html;
+ if(!isExempt&&status==='open'){
+  w.groups.forEach(g=>{
+   if(ownRecord(g))return;
+   const d=state.drafts[g]||(state.drafts[g]={fun:0,useful:0,learn:0,comment:''});
+   const textarea=$('comment-'+g);textarea.value=d.comment||'';
+   const form=$('form-'+g);
+   form.querySelectorAll('input[type=radio]').forEach(input=>input.addEventListener('change',()=>{
+    const k=input.name.split('-')[0];d[k]=Number(input.value);updateForm(g);
+   }));
+   textarea.addEventListener('input',()=>{d.comment=textarea.value;updateForm(g);});
+   form.addEventListener('submit',ev=>{ev.preventDefault();handleSubmitGroup(g);});
+   updateForm(g);
+  });
+ }
+}
+function updateForm(groupId){
+ const btn=$('send-'+groupId);if(!btn)return;
+ const d=state.drafts[groupId]||{};
+ const n=commentLength(d.comment||'');
+ const count=$('count-'+groupId);count.textContent=n<10?`已輸入 ${n} 字，還差 ${10-n} 字`:`已輸入 ${n} 字 ✓`;
+ count.style.color=n<10?'#9b6119':'#087f78';
+ const lock=state.sending||Boolean(state.pending);
+ const canSubmit=DIMENSIONS.every(m=>Number.isInteger(d[m.key])&&d[m.key]>=1&&d[m.key]<=4)&&n>=10;
+ const retry=state.pending?.action==='submit'&&Number(state.pending.groupId)===Number(groupId);
+ btn.disabled=state.sending?true:retry?false:lock||!canSubmit;
+ btn.textContent=state.sending&&retry?'正在寫入…':retry?'重新確認這組是否已送出':`送出第 ${groupId} 組評分`;
+ const form=$('form-'+groupId);if(form)form.querySelectorAll('input,textarea').forEach(x=>x.disabled=lock);
+}
+function renderHistory(){
+ let html='<div class="tagline">MY LEARNING LOG</div><h2 id="history-heading">我的歷次評分與心得</h2><p class="sub">每組評分均可回顧；已提交的分數及文字都不能修改。</p>';
+ if(!state.records.length)html+='<div class="empty">目前還沒有已提交的評分。報告當週免評，不會列為缺交。</div>';
+ else html+='<div class="history-list">'+[...state.records].sort((a,b)=>b.weekId.localeCompare(a.weekId)||a.groupId-b.groupId).map(r=>`<article class="history-item"><div class="history-head"><span class="history-badge">${esc(r.weekLabel)}</span><span>報告日 ${esc(r.weekId)}</span><span>提交 ${esc(r.submittedAt)}</span></div><div class="history-title">第 ${r.groupId} 組 · 期末成果報告</div>${scorePills(r)}<p class="history-note">${esc(r.comment)}</p></article>`).join('')+'</div>';
+ $('history-panel').innerHTML=html;
+}
+function render(){if(!state.identity)return;renderBanner();renderTabs();renderWeekly();renderHistory();}
+function handleSubmitGroup(g){
+ if(state.sending)return;
+ if(state.pending){if(state.pending.action==='submit'&&Number(state.pending.groupId)===g)api(state.pending);return;}
+ const w=currentWeek(),d=state.drafts[g]||{};
+ if(exempt(w)||weekStatus(w)!=='open'||ownRecord(g)){show('group-message-'+g,'error','本週免評、未開放、已截止或已送出，無法再次提交。');return;}
+ if(!DIMENSIONS.every(m=>Number.isInteger(d[m.key])&&d[m.key]>=1&&d[m.key]<=4)||commentLength(d.comment)<10){
+  show('group-message-'+g,'error','請完整給出好玩、好用、好學各 1～4 分，並填寫至少 10 字心得。');return;
+ }
+ const text=`確定送出「第 ${g} 組」嗎？\n好玩 ${d.fun} 分、好用 ${d.useful} 分、好學 ${d.learn} 分。\n送出後不能修改。`;
+ if(!window.confirm(text))return;
+ api({action:'submit',requestId:secureToken(),studentId:state.identity.studentId,studentName:state.identity.studentName,weekId:w.id,groupId:g,
+  fun:d.fun,useful:d.useful,learn:d.learn,comment:d.comment.trim()});
+}
+$('identity-form').addEventListener('submit',ev=>{
+ ev.preventDefault();if(state.sending||state.pending)return;
+ if(connection!=='ready'){show('identity-message','error',connection==='checking'?'正在確認資料服務，請稍後再試。':(connectionMessage||'課程接收端尚未連線。'));return;}
+ const studentId=$('student-id').value.trim().toUpperCase();const studentName=$('student-name').value.replace(/\s+/g,'').trim();
+ if(!/^[A-Z0-9-]{4,24}$/.test(studentId)){show('identity-message','error','請確認學號格式。');return;}
+ if(Array.from(studentName).length<2||Array.from(studentName).length>30){show('identity-message','error','請填寫完整姓名。');return;}
+ hideMessage('identity-message');api({action:'lookup',requestId:secureToken(),studentId,studentName});
+});
+connect();
+</script>
+</body>
+</html>
