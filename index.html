@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f5f7fb">
+<meta name="theme-color" content="#fcf8fc">
 <meta name="description" content="學習功能嚴重缺損課程調整與教學設計：好玩、好用、好學三指標各4分，期末報告逐組評分與心得回顧。">
 <title>學習功能嚴重缺損課程調整與教學設計｜期末報告互評</title>
 <style>
@@ -128,7 +128,9 @@ textarea { display:block; min-height:105px; resize:vertical; width:100%; border-
 .group-card {border:1px solid #e0e8f3;border-radius:17px;background:#fff;padding:21px 21px 23px;box-shadow:0 5px 20px rgba(23,48,77,.025);}
 .group-card.complete-group {background:#fcfdff;}
 .group-head {display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid #edf1f6;margin-bottom:17px;}
-.group-index {font-weight:860;font-size:19px;color:#1b3e66;}
+.group-index {font-weight:860;font-size:14px;color:#1b3e66;}
+.group-heading { flex:1 1 210px; min-width:0; }
+.group-topic { color:var(--brand); font-size:clamp(16px,2.6vw,19px); font-weight:850; line-height:1.45; overflow-wrap:anywhere; margin:4px 0; }
 .group-desc {color:#6d819b;font-size:12px;}
 .group-badge {margin-left:auto;border-radius:22px;font-size:11px;padding:4px 10px;background:#f0f4fa;color:#69819b;font-weight:780;}
 .group-badge.complete {background:#e6f7ef;color:#087b68;}
@@ -163,10 +165,103 @@ textarea { display:block; min-height:105px; resize:vertical; width:100%; border-
 .group-list-plain div {padding:14px 12px;border:1px solid #e0e7f2;border-radius:12px;font-weight:750;color:#4a6079;background:#fbfcff;}
 @media(max-width:720px){.metric-grid{grid-template-columns:1fr;}.metric legend span{min-height:0;}.rating-choices{grid-template-columns:repeat(4,minmax(0,1fr));}.metric{padding:12px 15px;}}
 @media(max-width:620px){.weeks{grid-template-columns:repeat(2,minmax(0,1fr));}.week-tab{min-height:97px;}.metric-grid{gap:10px;}.group-card{padding:17px 13px;}.group-head{gap:7px;}.group-badge{margin-left:auto;}.group-desc{font-size:11px;}.progress-line{align-items:start;}}
+/* ===== 暖紫 × 珊瑚橘 配色專區（只調整視覺，不動填答邏輯） ===== */
+:root {
+  --ink:#382b40;
+  --muted:#76687c;
+  --line:#e9dce9;
+  --brand:#7940a9;
+  --brand-dark:#5e2d88;
+  --teal:#166e63;
+  --paper:#ffffff;
+  --page:#fcf8fc;
+  --soft:#f8f0fa;
+  --shadow:0 15px 42px rgba(80,39,91,.075);
+}
+body { background:radial-gradient(ellipse at 7% 0%,#f7ecf6 0,transparent 38rem),var(--page); }
+.site-header {background:#fffdfd;border-top:4px solid #d48479;border-bottom-color:#f0e4ed;}
+.brand-icon {background:linear-gradient(140deg,#fbe9e3,#ecdcf7);color:#7740a5;}
+.header-note {color:#8c7b8d;}
+.hero {background:linear-gradient(118deg,#452557 0%,#793e79 67%,#b75d74 140%);}
+.hero:after {border-color:#ffffff30;box-shadow:0 0 0 64px #ffffff0d,0 0 0 130px #ffffff06;}
+.eyebrow {color:#ffdecf;}
+.hero p {color:#f4e7f5;}
+.chip {color:#fff9fb;border-color:#ffffff40;background:#ffffff17;}
+.chip:nth-child(2) {background:#ffd7bb30;}
+.card {border-color:#eee3ed;box-shadow:var(--shadow);}
+.tagline,.card-kicker {color:#7a3a9d;}
+.field input,textarea {border-color:#dfd2e1;}
+.field input::placeholder,textarea::placeholder {color:#9c8ea3;}
+.field input:focus,textarea:focus {border-color:#9158b4;box-shadow:0 0 0 3px #dbc1ed73;}
+button:focus-visible,input:focus-visible,textarea:focus-visible,.choice:focus-within {outline-color:#c7a2de;}
+.btn {background:var(--brand);}
+.btn:hover:not(:disabled) {background:var(--brand-dark);}
+.btn:disabled {background:#cbb8d0;}
+.btn.secondary {background:#f1e6f5;color:#6b318c;}
+.btn.secondary:hover:not(:disabled) {background:#e8d5ef;}
+.status.info {background:#f5edfa;color:#5d3976;}
+.status.success {background:#e7f6ee;color:#115e50;}
+.current-user {background:#faf0f9;border-color:#ead6e9;}
+.current-user span {color:#796985;}
+.week-tab {border-color:#eadde9;}
+.week-tab:hover:not(:disabled) {border-color:#b48ac9;}
+.week-tab.selected {border-color:#8851ae;background:#fbf6ff;box-shadow:0 0 0 3px #f0e5f6;}
+.week-kicker {color:#88718a;}
+.week-state {background:#f4eff4;color:#7a7180;}
+.week-state.open,.pill.open {background:#e5f3ed;color:#176b58;}
+.week-state.done {background:#f1e5f9;color:#743ba2;}
+.pill {background:#f4eff5;color:#786b80;}
+.deadline {color:#83748a;}
+.notice {background:#fbf8fc;border-color:#efe4ee;color:#685972;}
+.notice.success {background:#e9f7f0;border-color:#ccebdd;}
+.notice.success strong {color:#176d57;}
+.group-card {border-color:#eadfe9;box-shadow:0 5px 20px rgba(80,39,91,.035);}
+.group-card.complete-group {background:#fffafd;}
+.group-head {border-bottom-color:#f0e8f1;}
+.group-index {color:#713b8e;}
+.group-desc {color:#88758c;}
+.group-badge {background:#f3edf5;color:#806c86;}
+.group-badge.complete {background:#e2f4ed;color:#166d5f;}
+.progress-line {color:#673e7a;}
+.progress-line span {color:#88788f;}
+.progress-track {background:#f1e7f1;}
+.progress-fill {background:linear-gradient(90deg,#cc6f72 0%,#9152b5 100%);}
+.mini-guide {color:#7b687e;}
+.metric {border-color:#eadde9;background:#fdfafe;}
+/* 三個指標各有獨立識別色；不改動評分的選擇與計算規則 */
+.metric:nth-child(3n+1) {--metric:#ab483c;--metric-bg:#fff0ec;--metric-border:#ecc3b8;background:#fffbf9;border-color:#f0d7cf;}
+.metric:nth-child(3n+2) {--metric:#117365;--metric-bg:#eaf8f2;--metric-border:#b7dfd1;background:#f8fdfb;border-color:#d1e8de;}
+.metric:nth-child(3n+3) {--metric:#713ba4;--metric-bg:#f1e9fc;--metric-border:#d9c4ed;background:#fcf9ff;border-color:#e7d9f2;}
+.metric legend strong {color:var(--metric,#713ba4);}
+.metric legend span {color:#817287;}
+.rate span {border-color:#e3d9e6;color:#685771;}
+.rate input:checked+span {background:var(--metric-bg,#f1e9fc);color:var(--metric,#713ba4);border-color:var(--metric,#713ba4);box-shadow:inset 0 0 0 1px var(--metric,#713ba4);}
+.rate input:focus-visible+span {outline-color:#cba9dc;}
+.rate:hover span {border-color:var(--metric-border,#d9c4ed);}
+.score-pills span {background:#f2e9f7;color:#6d4a83;}
+.score-pills b {color:#632f85;}
+.score-pills span:nth-child(1) {background:#fff0ea;color:#8e473a;}
+.score-pills span:nth-child(1) b {color:#9f3d32;}
+.score-pills span:nth-child(2) {background:#eaf7f1;color:#17695b;}
+.score-pills span:nth-child(2) b {color:#0c695d;}
+.score-pills span:nth-child(3) {background:#f1e8fb;color:#6b3794;}
+.score-pills span:nth-child(3) b {color:#60308d;}
+.score-pills .score-total {background:#f4e9f5;color:#754184;}
+.score-pills .score-total b {color:#623479;}
+.readonly-tip {color:#137165;}
+.history-item {border-color:#eadde9;}
+.history-head {color:#85768d;}
+.history-badge {background:#f1e5f8;color:#713aa0;}
+.history-note {color:#5d5266;}
+.readonly-comment {border-left-color:#b67aba;background:#fcf7ff;}
+.group-list-plain div {background:#fdf9fd;border-color:#e8dce9;color:#705c79;}
+.footnote {color:#918394;}
+.group-topic { color:#6d308c; }
+/* ===== 配色專區結束 ===== */
 </style>
 </head>
 <body>
-<header class="site-header"><div class="wrap header-inner"><div class="brand"><div class="brand-icon" aria-hidden="true">學</div><div>學習功能嚴重缺損課程調整與教學設計</div></div><div class="header-note">2026 秋季課程 · 原版單頁 · 好玩 × 好用 × 好學</div></div></header>
+<header class="site-header"><div class="wrap header-inner"><div class="brand"><div class="brand-icon" aria-hidden="true">學</div><div>學習功能嚴重缺損課程調整與教學設計</div></div><div class="header-note">2026 秋季課程 · 暖紫珊瑚版 · 好玩 × 好用 × 好學</div></div></header>
 <main class="wrap">
  <section class="hero" aria-labelledby="page-title">
   <div class="eyebrow">FINAL PROJECT · PEER REVIEW</div>
@@ -177,11 +272,11 @@ textarea { display:block; min-height:105px; resize:vertical; width:100%; border-
  <section class="card" id="identity-card" aria-labelledby="identity-title">
   <div class="tagline">STEP 01 · IDENTIFY</div>
   <h2 id="identity-title">第一步：輸入學號與姓名</h2>
-  <p class="sub">只要與課程名單相符，就能在同一頁選擇週次、逐組評分，並查看以前的心得。</p>
+  <p class="sub">學生以學號和姓名登入互評；教師也可使用專用帳號預覽四週評分，不影響正式統計。</p>
   <form id="identity-form" novalidate><div class="fields">
    <div class="field"><label for="student-id">學號（必填）</label><input id="student-id" name="studentId" type="text" autocomplete="off" maxlength="24" spellcheck="false" placeholder="請輸入你的學號" required></div>
    <div class="field"><label for="student-name">姓名（必填）</label><input id="student-name" name="studentName" type="text" autocomplete="name" maxlength="30" placeholder="請輸入完整姓名" required></div>
-  </div><div class="form-bottom"><span class="hint">教師已預先匯入 38 人名單，無須自行登記。請勿代他人填答。</span><button type="submit" class="btn" id="identify-btn">查看我的互評頁面</button></div>
+  </div><div class="form-bottom"><span class="hint">學生名單 38 人；另提供教師預覽帳號。請勿代他人填答。</span><button type="submit" class="btn" id="identify-btn">查看我的互評頁面</button></div>
   <div class="status" role="status" aria-live="polite" id="identity-message" hidden></div></form>
  </section>
  <div id="workspace" hidden>
@@ -196,21 +291,33 @@ textarea { display:block; min-height:105px; resize:vertical; width:100%; border-
 <script>'use strict';
 /* 新課程請部署自己的 Apps Script，再把下行替換成新取得的 /exec 網址。
    絕對不要貼教學原理那一門的舊網址。 */
-const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxAn3pMnvpPwiqE4BNKQkQ6GwgkB1U7Rfjo6MWasarbkRtPEgBhfdvKKfS34oZRETCt/exec';
-const BACKEND_RELEASE = 'SF-2026-v1.0';
+const WEB_APP_URL = 'PASTE_NEW_COURSE_APPS_SCRIPT_EXEC_URL_HERE';
+const BACKEND_RELEASE = 'SF-2026-v1.1-teacher';
 const WEEKS = [
  {id:'2026-11-23',label:'11/23',ordinal:'第一週',open:'2026-11-22',end:'2026-11-24',groups:[1,2]},
  {id:'2026-12-07',label:'12/7',ordinal:'第二週',open:'2026-12-06',end:'2026-12-08',groups:[3,4]},
  {id:'2026-12-14',label:'12/14',ordinal:'第三週',open:'2026-12-13',end:'2026-12-15',groups:[5,6,7]},
  {id:'2026-12-21',label:'12/21',ordinal:'第四週',open:'2026-12-20',end:'2026-12-22',groups:[8,9,10]}
 ];
+const GROUP_TITLES = Object.freeze({
+ 1:"球球，你別進洞！",
+ 2:"注音卡牌遊戲",
+ 3:"聲響懸吊幣值氣球拍擊盤",
+ 4:"垃圾分類卡牌遊戲",
+ 5:"生活用品磁吸配對板",
+ 6:"得分連線投擲靶",
+ 7:"百變足球",
+ 8:"班級公約動動卡",
+ 9:"手眼協調平衡迷宮訓練板",
+ 10:"可調式路徑任務板"
+});
 const DIMENSIONS = [
  {key:'fun',label:'好玩',hint:'活動有趣、能引發參與'},
  {key:'useful',label:'好用',hint:'教材、教具或策略具有實用性'},
  {key:'learn',label:'好學',hint:'說明清楚、容易理解與學習'}
 ];
 const $=id=>document.getElementById(id);
-const state={identity:null,records:[],presenterGroup:null,exemptWeekId:null,weekId:null,drafts:{},sending:false,pending:null};
+const state={identity:null,records:[],presenterGroup:null,exemptWeekId:null,isTeacher:false,weekId:null,drafts:{},sending:false,pending:null};
 let connection='checking',connectionMessage='';
 function esc(value){return String(value==null?'':value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function secureToken(){
@@ -223,10 +330,11 @@ function taiwanToday(){
  const o=Object.fromEntries(p.map(x=>[x.type,x.value]));return `${o.year}-${o.month}-${o.day}`;
 }
 function weekStatus(w){const d=taiwanToday();return d<w.open?'upcoming':d>w.end?'closed':'open';}
-function exempt(w){return state.exemptWeekId===w.id;}
+function exempt(w){return !state.isTeacher&&state.exemptWeekId===w.id;}
 function ownRecord(groupId){return state.records.find(r=>Number(r.groupId)===Number(groupId));}
 function weekDone(w){return w.groups.filter(g=>ownRecord(g)).length;}
 function weekStatusText(w){
+ if(state.isTeacher)return '教師預覽';
  if(exempt(w))return '當週免評';
  if(weekDone(w)===w.groups.length)return '已完成';
  if(weekStatus(w)==='open')return `已評 ${weekDone(w)}/${w.groups.length}`;
@@ -301,7 +409,7 @@ async function api(attempt){
   if(result.release!==BACKEND_RELEASE){show(msgId,'error','後端版本不符，請教師更新部署。');return;}
   if(attempt.action==='lookup'){
    state.identity={studentId:result.studentId,studentName:result.studentName};
-   state.presenterGroup=result.presenterGroup;state.exemptWeekId=result.exemptWeekId;
+   state.presenterGroup=result.presenterGroup;state.exemptWeekId=result.exemptWeekId;state.isTeacher=Boolean(result.isTeacher);
    state.records=Array.isArray(result.records)?result.records:[];
    setWeekDefault();$('identity-card').hidden=true;$('workspace').hidden=false;render();
   }else{
@@ -317,10 +425,11 @@ async function api(attempt){
  }
 }
 function renderBanner(){
- $('user-banner').innerHTML=`<div><strong>${esc(state.identity.studentName)}，歡迎進入互評頁面</strong><span>學號 ${esc(state.identity.studentId)} · 第 ${state.presenterGroup} 組 · 該組報告週免評</span></div><button type="button" class="btn secondary" id="switch-user">切換填寫者</button>`;
+ const detail=state.isTeacher?'教師預覽帳號 · 可測試四週評分 · 不會寫入正式資料':`學號 ${esc(state.identity.studentId)} · 第 ${state.presenterGroup} 組 · 該組報告週免評`;
+ $('user-banner').innerHTML=`<div><strong>${esc(state.identity.studentName)}，歡迎進入互評頁面</strong><span>${detail}</span></div><button type="button" class="btn secondary" id="switch-user">切換填寫者</button>`;
  $('switch-user').addEventListener('click',()=>{
   if(state.sending||state.pending)return;
-  state.identity=null;state.records=[];state.drafts={};state.presenterGroup=null;state.exemptWeekId=null;
+  state.identity=null;state.records=[];state.drafts={};state.presenterGroup=null;state.exemptWeekId=null;state.isTeacher=false;
   $('workspace').hidden=true;$('identity-card').hidden=false;$('student-id').value='';$('student-name').value='';hideMessage('identity-message');$('student-id').focus();
  });
 }
@@ -344,8 +453,8 @@ function scorePills(r){return `<div class="score-pills"><span>好玩 <b>${r.fun}
 function commentLength(v){return Array.from(String(v||'').replace(/\s/g,'')).length;}
 function groupCard(w,g,status){
  const record=ownRecord(g),d=state.drafts[g]||{fun:0,useful:0,learn:0,comment:''};
- const head=`<div class="group-head"><div class="group-index">第 ${g} 組</div><div class="group-desc">期末成果報告 · ${w.label}</div><span class="group-badge ${record?'complete':''}">${record?'已完成':status==='open'?'待評分':status==='upcoming'?'尚未開放':'已截止'}</span></div>`;
- if(record)return `<article class="group-card complete-group" id="group-${g}">${head}<div class="readonly-tip">這組已送出，評分與心得不能修改。</div>${scorePills(record)}<p class="history-note">${esc(record.comment)}</p><div class="deadline">提交：${esc(record.submittedAt)}</div><div id="group-message-${g}" class="status" role="status" hidden></div></article>`;
+ const head=`<div class="group-head"><div class="group-heading"><div class="group-index">第 ${g} 組</div><div class="group-topic">${esc(GROUP_TITLES[g] || '期末成果報告')}</div><div class="group-desc">${w.label} · 期末成果報告</div></div><span class="group-badge ${record?'complete':''}">${record?(state.isTeacher?'模擬完成':'已完成'):status==='open'?(state.isTeacher?'預覽評分':'待評分'):status==='upcoming'?'尚未開放':'已截止'}</span></div>`;
+ if(record)return `<article class="group-card complete-group" id="group-${g}">${head}<div class="readonly-tip">${state.isTeacher?'教師模擬紀錄，只保留在這個頁面，重新整理後消失。':'這組已送出，評分與心得不能修改。'}</div>${scorePills(record)}<p class="history-note">${esc(record.comment)}</p><div class="deadline">${state.isTeacher?'模擬時間':'提交'}：${esc(record.submittedAt)}</div><div id="group-message-${g}" class="status" role="status" hidden></div></article>`;
  if(status!=='open')return `<article class="group-card" id="group-${g}">${head}<div class="notice">${status==='upcoming'?'報告前一天 00:00 開放評分。':'已超過截止時間，無法補填或修改。'}</div></article>`;
  return `<article class="group-card" id="group-${g}">${head}
   <form id="form-${g}" novalidate><p class="mini-guide">請分別給 1～4 分（4 分表示最符合），再寫下至少 10 字的具體心得。</p>
@@ -354,18 +463,19 @@ function groupCard(w,g,status){
   </div>
   <div class="comment-head"><label class="form-label" for="comment-${g}">這一組的學習心得（至少 10 字）</label><span class="count" id="count-${g}">0 / 至少 10 字</span></div>
   <textarea id="comment-${g}" rows="3" placeholder="例如：活動的操作方式很清楚，我學到如何調整教材……" aria-describedby="count-${g}"></textarea>
-  <div class="form-bottom"><span class="hint">每組只可送出一次；送出後無法改分或改心得。</span><button class="btn" type="submit" id="send-${g}" disabled>送出第 ${g} 組評分</button></div>
+  <div class="form-bottom"><span class="hint">${state.isTeacher?'教師模式僅供畫面與流程測試，不寫入 Sheet。':'每組只可送出一次；送出後無法改分或改心得。'}</span><button class="btn" type="submit" id="send-${g}" disabled>${state.isTeacher?'本機預覽':'送出'}第 ${g} 組評分</button></div>
   <div id="group-message-${g}" class="status" role="status" aria-live="polite" hidden></div>
   </form></article>`;
 }
 function renderWeekly(){
- const w=currentWeek(),status=weekStatus(w),done=weekDone(w),isExempt=exempt(w);
+ const w=currentWeek(),status=state.isTeacher?'open':weekStatus(w),done=weekDone(w),isExempt=exempt(w);
  const period=`${w.open.replaceAll('-','/')} 00:00 ～ ${w.end.replaceAll('-','/')} 23:59`;
  let html=`<div class="card-top"><div><div class="card-kicker">${w.ordinal} · ${w.label}（週一）</div><h2 class="card-title">期末成果分組互評</h2></div><span class="pill ${status==='open'&&!isExempt?'open':''}">${weekStatusText(w)}</span></div>
  <div class="deadline">開放期間：${period}（臺灣時間）</div>`;
+ if(state.isTeacher)html+='<div class="notice" style="margin-top:16px"><strong>教師預覽模式</strong>你可以切換四週、填寫三項評分及心得；按下預覽僅保留於本頁，不會存進 Google Sheet，也不計入任何學生評分。</div>';
  if(isExempt){
   html+=`<div class="notice exempt"><strong>本週你是第 ${state.presenterGroup} 組報告者，免評本週所有組別</strong>這週共有 ${w.groups.length} 組報告，依課堂規則，所有當週報告組員均免填；其他週次仍正常評分。</div>`;
-  html+=`<div class="group-list-plain">${w.groups.map(g=>`<div>第 ${g} 組 · 期末成果報告</div>`).join('')}</div>`;
+  html+=`<div class="group-list-plain">${w.groups.map(g=>`<div>第 ${g} 組：${esc(GROUP_TITLES[g] || '期末成果報告')}</div>`).join('')}</div>`;
  }else{
   html+=`<div class="progress-line"><strong>本週進度：${done} / ${w.groups.length} 組</strong><span>${done===w.groups.length?'本週全部完成！':'每個報告組別都要分別評分'}</span></div><div class="progress-track"><div class="progress-fill" style="width:${100*done/w.groups.length}%"></div></div>`;
   if(status==='closed'&&done<w.groups.length)html+='<div class="notice" style="margin:16px 0">已超過截止時間，尚未評分的組別無法再補交。</div>';
@@ -397,13 +507,13 @@ function updateForm(groupId){
  const canSubmit=DIMENSIONS.every(m=>Number.isInteger(d[m.key])&&d[m.key]>=1&&d[m.key]<=4)&&n>=10;
  const retry=state.pending?.action==='submit'&&Number(state.pending.groupId)===Number(groupId);
  btn.disabled=state.sending?true:retry?false:lock||!canSubmit;
- btn.textContent=state.sending&&retry?'正在寫入…':retry?'重新確認這組是否已送出':`送出第 ${groupId} 組評分`;
+ btn.textContent=state.sending&&retry?'正在寫入…':retry?'重新確認這組是否已送出':`${state.isTeacher?'本機預覽':'送出'}第 ${groupId} 組評分`;
  const form=$('form-'+groupId);if(form)form.querySelectorAll('input,textarea').forEach(x=>x.disabled=lock);
 }
 function renderHistory(){
- let html='<div class="tagline">MY LEARNING LOG</div><h2 id="history-heading">我的歷次評分與心得</h2><p class="sub">每組評分均可回顧；已提交的分數及文字都不能修改。</p>';
- if(!state.records.length)html+='<div class="empty">目前還沒有已提交的評分。報告當週免評，不會列為缺交。</div>';
- else html+='<div class="history-list">'+[...state.records].sort((a,b)=>b.weekId.localeCompare(a.weekId)||a.groupId-b.groupId).map(r=>`<article class="history-item"><div class="history-head"><span class="history-badge">${esc(r.weekLabel)}</span><span>報告日 ${esc(r.weekId)}</span><span>提交 ${esc(r.submittedAt)}</span></div><div class="history-title">第 ${r.groupId} 組 · 期末成果報告</div>${scorePills(r)}<p class="history-note">${esc(r.comment)}</p></article>`).join('')+'</div>';
+ let html='<div class="tagline">MY LEARNING LOG</div><h2 id="history-heading">'+(state.isTeacher?'本次教師預覽紀錄':'我的歷次評分與心得')+'</h2><p class="sub">'+(state.isTeacher?'教師預覽不會儲存至 Sheet，重新整理或切換帳號後會清空。':'每組評分均可回顧；已提交的分數及文字都不能修改。')+'</p>';
+ if(!state.records.length)html+='<div class="empty">'+(state.isTeacher?'尚無本次預覽紀錄。':'目前還沒有已提交的評分。報告當週免評，不會列為缺交。')+'</div>';
+ else html+='<div class="history-list">'+[...state.records].sort((a,b)=>b.weekId.localeCompare(a.weekId)||a.groupId-b.groupId).map(r=>`<article class="history-item"><div class="history-head"><span class="history-badge">${esc(r.weekLabel)}</span><span>報告日 ${esc(r.weekId)}</span><span>提交 ${esc(r.submittedAt)}</span></div><div class="history-title">第 ${r.groupId} 組：${esc(GROUP_TITLES[Number(r.groupId)] || '期末成果報告')}</div>${scorePills(r)}<p class="history-note">${esc(r.comment)}</p></article>`).join('')+'</div>';
  $('history-panel').innerHTML=html;
 }
 function render(){if(!state.identity)return;renderBanner();renderTabs();renderWeekly();renderHistory();}
@@ -411,12 +521,18 @@ function handleSubmitGroup(g){
  if(state.sending)return;
  if(state.pending){if(state.pending.action==='submit'&&Number(state.pending.groupId)===g)api(state.pending);return;}
  const w=currentWeek(),d=state.drafts[g]||{};
- if(exempt(w)||weekStatus(w)!=='open'||ownRecord(g)){show('group-message-'+g,'error','本週免評、未開放、已截止或已送出，無法再次提交。');return;}
+ if(exempt(w)||(weekStatus(w)!=='open'&&!state.isTeacher)||ownRecord(g)){show('group-message-'+g,'error','本週免評、未開放、已截止或已送出，無法再次提交。');return;}
  if(!DIMENSIONS.every(m=>Number.isInteger(d[m.key])&&d[m.key]>=1&&d[m.key]<=4)||commentLength(d.comment)<10){
   show('group-message-'+g,'error','請完整給出好玩、好用、好學各 1～4 分，並填寫至少 10 字心得。');return;
  }
- const text=`確定送出「第 ${g} 組」嗎？\n好玩 ${d.fun} 分、好用 ${d.useful} 分、好學 ${d.learn} 分。\n送出後不能修改。`;
- if(!window.confirm(text))return;
+ const text=`確定送出「第 ${g} 組：${GROUP_TITLES[g] || '期末成果報告'}」嗎？\n好玩 ${d.fun} 分、好用 ${d.useful} 分、好學 ${d.learn} 分。\n送出後不能修改。`;
+ if(!window.confirm(state.isTeacher?text+'\n這次是教師預覽，不會寫入 Google Sheet。':text))return;
+ if(state.isTeacher){
+  const t=new Date().toLocaleString('zh-TW',{timeZone:'Asia/Taipei',hour12:false});
+  state.records.push({weekId:w.id,weekLabel:w.ordinal,groupId:g,groupLabel:'第'+g+'組',
+   submittedAt:t,fun:d.fun,useful:d.useful,learn:d.learn,total:d.fun+d.useful+d.learn,comment:d.comment.trim(),preview:true});
+  delete state.drafts[g];render();return;
+ }
  api({action:'submit',requestId:secureToken(),studentId:state.identity.studentId,studentName:state.identity.studentName,weekId:w.id,groupId:g,
   fun:d.fun,useful:d.useful,learn:d.learn,comment:d.comment.trim()});
 }
